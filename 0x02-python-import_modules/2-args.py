@@ -3,17 +3,17 @@ def print_argv(argv):
   n =  len(argv) - 1
 
   if n == 0:
-    print(f"{n:d} argument.")
+    print("{:d} argument.".format(n))
     return
   elif n == 1:
-    print(f"{n:d} argument: ")
+    print("{:d} argument: ".format(n))
   else:
-    print(f"{n:d} arguments: ")
+    print("{:d} arguments: ".format(n))
 
   i = 1
   
   while i <= n:
-    print(f"{i:d}: {argv[i]:s}")
+    print("{:d}: {:s}".format(i, argv[i]))
 
     i += 1
 
