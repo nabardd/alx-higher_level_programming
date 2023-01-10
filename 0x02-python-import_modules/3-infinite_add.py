@@ -10,6 +10,7 @@ def sum_args(argv):
 
       print("{:d}".format(sum))
 
+
 if __name__ == "__main__":
     import sys
     sum_args(sys.argv)
