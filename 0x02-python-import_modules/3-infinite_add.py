@@ -5,7 +5,7 @@ def sum_args(argv):
       print("{:d}".format(n))
     else:
       sum = 0
-      for i in range(1, len(argv) + 1):
+      for i in range(1, len(argv)):
         sum += int(argv[i])
 
       print("{:d}".format(sum))
