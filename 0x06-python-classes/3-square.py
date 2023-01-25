@@ -12,7 +12,7 @@ class Square:
         Args:
             size (int): size of square.
         """
-        if size > 0:
+        if size >= 0:
             if isinstance(size, int):
                 self.__size = size
             else:

@@ -13,7 +13,7 @@ class Square:
             size (int): size of the square.
         """
 
-        if size > 0:
+        if size >= 0:
             if isinstance(size, int):
                 self.__size = size
             else:
@@ -35,7 +35,7 @@ class Square:
         Args:
             value (int): new value for size.
         """
-        if value > 0:
+        if value >= 0:
             if isinstance(value, int):
                 self.__size = value
             else:
