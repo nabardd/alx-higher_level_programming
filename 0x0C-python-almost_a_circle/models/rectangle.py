@@ -123,11 +123,67 @@ class Rectangle(Base):
     
     def display(self):
         """Displays the rectangle using # to stdout"""
+
+        for i in range(self.__y):
+            print(" ")
         for i in range(self.__height):
+            print(" " * self.__x, end="")
             print("#" * self.__width)
+
+    def update(self, *args, **kwargs):
+        """
+        Update the instance attributes
+
+        Args:
+        index 0 (int): id attribute
+        index 1 (int): width attribute
+        index 2 (int): height attribute
+        index 3 (int): x attribute
+        index 4 (int): y attribute
+        """
+        if args is not None:
+            for i in range(len(args)):
+                if i == 0:
+                    if args[i] == None:
+                        self.__init__(
+                            self.height, self.width, self.x, self.y
+                        )
+                    else:
+                        self.id = args[i]
+                if i == 1:
+                    self.width = args[i]
+                if i == 2:
+                    self.height = args[i]
+                if i == 3:
+                    self.x = args[i]
+                if i == 4:
+                    self.y == args[i]
+        else:
+            if kwargs or len(kwargs) != 0:
+                for key, value in kwargs.items():
+                    if key == "id":
+                        if value is None:
+                            self.__init__(
+                                    self.width, self.height, self.x, self.y)
+                        else:
+                            self.id = value
+                    if key == "width":
+                        self.width = value
+                    if key == "height":
+                        self.height = value
+                    if key == "x":
+                        self.x = value
+                    if key == "y":
+                        self.y = value
+
 
     def __str__(self):
         """String representation of rectangle info"""
 
         return f"[Rectangle] ({self.id}) <{self.__x}>/<{self.y}> - <{self.__width}>/<{self.__height}>"
     
+    def to_dictionary(self):
+        """returns dictionary representation
+        of rectangle"""
+        return {"id": self.id, "width": self.width,
+                "height": self.height, "x": self.x, "y": self.y}
