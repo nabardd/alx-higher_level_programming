@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from base import Base
+import json
 
 """Class representing a rectangle"""
 
@@ -175,7 +176,6 @@ class Rectangle(Base):
                         self.x = value
                     if key == "y":
                         self.y = value
-
 
     def __str__(self):
         """String representation of rectangle info"""
