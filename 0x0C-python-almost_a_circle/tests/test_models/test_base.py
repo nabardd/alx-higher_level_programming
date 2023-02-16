@@ -51,7 +51,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_nb_instances(self):
         with self.assertRaises(AttributeError):
             print(Base(12).__nb_instances)
-    
+
 
 class TestBase_to_json_string(unittest.TestCase):
     """Unittest for testing to_json_string method of Base class"""
@@ -161,4 +161,50 @@ class TestBase_save_to_file(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square.save_to_file([], 2)
 
-    
+class TestBase_load_from_file(unittest.TestCase):
+    """Tests for testing load_from_file method of Base class"""
+
+    @classmethod
+    def teardown(self):
+        """Delete any saved file"""
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+        
+    def test_load_from_file_rect(self):
+        rect = Rectangle(10, 7, 2, 8, 2)
+
+        Rectangle.save_to_file([rect])
+        output = Rectangle.load_from_file()
+        self.assertEqual(output[0], str(rect))
+
+    def test_load_from_file_rect(self):
+        rect = Rectangle(10, 2, 4, 5, 1)
+        Rectangle.save_to_file([rect])
+        output = Rectangle.load_from_file()
+        self.assertTrue(all(type(obj) == Rectangle for obj in output))
+
+    def test_load_from_file_square(self):
+        square = Square(10, 7, 2)
+
+        Square.save_to_file(square)
+        output = Square.load_from_file()
+        self.assertEqual(output[0], str(square))
+
+    def test_load_from_file_square(self):
+        square = Square(10, 2, 4,)
+        Square.save_to_file(square)
+        output = Square.load_from_file()
+        self.assertTrue(all(type(obj) == Square for obj in output))
+
+    def test_load_from_file_args(self):
+        with self.assertRaises(ValueError):
+            Base.load_from_file([], 1)
+
+if __name__ == "__main__":
+    unittest.main()
