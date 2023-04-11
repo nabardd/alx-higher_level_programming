@@ -4,3 +4,5 @@ const addMeMaybe = (num, func) => {
   num += 1;
   func();
 }
+
+module.exports = addMeMaybe;

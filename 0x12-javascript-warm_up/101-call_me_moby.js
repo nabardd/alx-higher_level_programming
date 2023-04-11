@@ -6,3 +6,5 @@ const callMeMoby = (num, func) => {
     num -= 1;
   }
 }
+
+module.exports = callMeMoby;
