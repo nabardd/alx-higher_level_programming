@@ -29,8 +29,8 @@ def db_connect():
 
 	results = cursor.fetchall()
 
-	for idx, state in enumerate(results):
-		print((idx, state))
+	for state in results:
+		print((state[0], state[1]))
 
 
 if __name__ == "__main__":
