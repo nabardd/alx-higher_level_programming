@@ -38,4 +38,9 @@ def db_connect():
     cursor.execute(query)
     results = cursor.fetchall()
 
-    
+    for state in results:
+        print(state)
+
+
+if __name__ == "__main__":
+    db_connect()

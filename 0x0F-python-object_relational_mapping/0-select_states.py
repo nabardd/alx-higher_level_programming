@@ -30,7 +30,7 @@ def db_connect():
 	results = cursor.fetchall()
 
 	for state in results:
-		print((state[0], state[1]))
+		print(state)
 
 
 if __name__ == "__main__":
