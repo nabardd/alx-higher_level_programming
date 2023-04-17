@@ -33,7 +33,7 @@ def db_connect():
     query = """
     SELECT * FROM `states`
     WHERE name LIKE 'N%'
-    ORDER BY id ASC;
+    ORDER BY id ASC
     """
     cursor.execute(query)
     results = cursor.fetchall()

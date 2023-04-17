@@ -25,7 +25,7 @@ def db_connect():
 	print("Connected")
 
 	cursor = db_connection.cursor()
-	cursor.execute("SELECT * FROM `states` ORDER BY id;")
+	cursor.execute("SELECT * FROM `states` ORDER BY id ASC")
 
 	results = cursor.fetchall()
 
