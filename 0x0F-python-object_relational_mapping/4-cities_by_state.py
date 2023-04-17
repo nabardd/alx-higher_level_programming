@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 
 """
-Lists all states with a name starting with N from
-the database hbtn_0e_0_usa.
+Takes in an argument and displays all values in
+the states tabel of hbtn_0e_0 where name matches
+the argument.
 
-The script accepts three arguments:
+Safe from SQL Injection
+
+The script accepts four arguments:
 	-- mysql username,
 	-- mysql password,
-	-- database name
+	-- database name,
 """
 
 import sys
@@ -32,17 +35,20 @@ def db_connect():
         return 0
 
     cursor = db.cursor()
+
     query = """
-    SELECT * FROM `states`
-    WHERE name LIKE 'N%'
-    ORDER BY id ASC
+    SELECT city.id, city.name, state.name
+    FROM `cities` as city
+    INNER JOIN `states` as state
+    ON state.id = city.state_id
+    ORDER BY city.id ASC
     """
     cursor.execute(query)
     results = cursor.fetchall()
 
     for state in results:
         print(state)
-
+    
     cursor.close()
     db.close()
 
